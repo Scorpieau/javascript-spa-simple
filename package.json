@@ -16,6 +16,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
     "bootstrap": "^5.0.2",
     "css-loader": "^5.2.6",

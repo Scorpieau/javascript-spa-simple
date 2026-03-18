@@ -1,6 +1,6 @@
 // test/test-runner.js
-const test = require('node:test');
-const assert = require('assert');
+import test from 'node:test';
+import assert from 'assert';
 
 // Simple test suite using Node.js built-in test runner
 
