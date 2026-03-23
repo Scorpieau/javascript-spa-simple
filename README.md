@@ -63,26 +63,27 @@ This is useful to ensure a fresh build or to clean up build artifacts.
 
 ## CI Workflow
 
-**Graph Syntax:**
+
+**Build Application Workflow (Graph):**
 ```mermaid
 graph TD
+    T((Push or Pull Request to main branch))
+    T --> A[Audit dependencies]
+    T --> B[Lint source code]
+    T --> C[Application tests]
     A[Audit dependencies] --> E[Build application]
     B[Lint source code] --> E
     C[Application tests] --> E
     E --> F[Start and verify application]
-    D[Generic unit tests]
-    style D fill:#43a047,color:#fff
+    style C fill:#90caf9,color:#000
 ```
 
-**Flowchart Syntax:**
+**Generic Unit Tests Workflow (Flowchart):**
 ```mermaid
 flowchart TD
-    A[Audit dependencies] --> E[Build application]
-    B[Lint source code] --> E
-    C[Application tests] --> E
-    E --> F[Start and verify application]
-    D[Generic unit tests]
-    style D fill:#43a047,color:#fff 
+    T((Push or Pull Request to main branch))
+    T --> D[Generic unit tests]
+    style D fill:#a5d6a7,color:#000
 ```
 
 ## License
