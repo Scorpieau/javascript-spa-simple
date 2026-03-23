@@ -89,7 +89,7 @@ graph TD
     B[Lint source code] --> E
     C[Application tests] --> E
     E --> F[Start and verify application]
-    style C fill:#90caf9,color:#000
+    style F fill:#90caf9,color:#000
 ```
 
 
@@ -103,8 +103,9 @@ flowchart TD
 
 ## Legend
 
-- <span style="background:#90caf9;color:#000;padding:2px 6px;border-radius:3px">Light Blue</span>: Application tests node
-- <span style="background:#a5d6a7;color:#000;padding:2px 6px;border-radius:3px">Light Green</span>: Generic unit tests node
+- <span style="background:#90caf9;color:#000;padding:2px 6px;border-radius:3px">Start and verify application</span>: Runs only on the main branch after a successful build.
+- <span style="background:#a5d6a7;color:#000;padding:2px 6px;border-radius:3px"> Generic unit tests</span>: Runs only on pull requests
+
 
 ## Generic Unit Tests
 
