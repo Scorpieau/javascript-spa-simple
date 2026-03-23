@@ -16,7 +16,11 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 // Read the HTML mock file
 const htmlMock = readFileSync(join(__dirname, '../src/view/home.html'), 'utf-8');
 
-test('Home controller returns a div with #btnClick', () => {
+// Test: Home controller returns a div with #btnClick
+// This test ensures that the Home controller creates an HTMLElement and
+// that the element contains a button with the id "btnClick".
+// This is important for UI functionality that depends on this button.
+test('App: Home controller returns a div with #btnClick', () => {
     // Setup jsdom
     const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
     global.window = dom.window;

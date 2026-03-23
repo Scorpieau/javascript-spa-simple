@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "build": "npm run clean && webpack --config ./webpack/webpack.config.js --env env=prod",
-    "start": "webpack serve --config ./webpack/webpack.config.js --env env=dev --open",
+    "build": "npm run clean && webpack --config ./webpack/webpack.config.cjs --env env=prod",
+    "start": "webpack serve --config ./webpack/webpack.config.cjs --env env=dev --open",
     "clean": "rimraf dist",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

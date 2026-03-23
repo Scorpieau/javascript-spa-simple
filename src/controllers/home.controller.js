@@ -9,5 +9,12 @@ export default () => {
     alert("clicked");
   });
 
+  const secondBtnClick = divElement.querySelector("#btnSecondary");
+  secondBtnClick.addEventListener("click", () => {
+    alert("Test will run here");
+  });
+
+
+
   return divElement;
 };
