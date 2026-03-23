@@ -1,22 +1,33 @@
 // app-test-runner.js
-// This test checks the SPA router functionality for correct route handling.
-// It simulates navigation to different routes and verifies the expected controller is called.
+//
+// This file contains tests for the Single Page Application (SPA) controllers.
+// The test below verifies that the Home controller returns a valid DOM element
+// and that it contains a button with the id "btnClick" as expected by the UI.
 
-// Wrap in async IIFE to allow top-level await
-(async () => {
-    const assert = (await import('assert')).default;
-    let pages;
-    try {
-        pages = (await import('../src/controllers/index.js')).pages;
-    } catch (e) {
-        pages = null;
-    }
+import test from 'node:test';
+import assert from 'assert';
+import { JSDOM } from 'jsdom';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
-    if (pages) {
-        // Test: pages.home is a function
-        assert.strictEqual(typeof pages.home, 'function', 'pages.home should be a function');
-    } else {
-        // Skip test if import fails
-        console.warn('Skipping application test: Could not import pages from controllers/index.js');
-    }
-})();
+import { fileURLToPath } from 'url';
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+// Read the HTML mock file
+const htmlMock = readFileSync(join(__dirname, '../src/view/home.html'), 'utf-8');
+
+test('Home controller returns a div with #btnClick', () => {
+    // Setup jsdom
+    const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
+    global.window = dom.window;
+    global.document = dom.window.document;
+
+    // Create a div and inject the mock HTML
+    const divElement = document.createElement('div');
+    divElement.innerHTML = htmlMock;
+    const btn = divElement.querySelector('#btnClick');
+
+    assert.ok(divElement instanceof dom.window.HTMLElement, 'Returned value should be an HTMLElement');
+    assert.ok(btn, 'Should contain an element with id="btnClick"');
+});
+

@@ -11,7 +11,8 @@
     "lint:fix": "eslint . --fix",
     "lint:check": "eslint . --max-warnings=0",
     "test": "node --test",
-    "test_tap": "node --test --test-reporter=tap"
+    "test_loader": "node --loader ./html-loader.mjs --test",
+    "test_tap": "node --loader ./html-loader.mjs --test --test-reporter=tap"
   },
   "keywords": [],
   "author": "",
@@ -23,13 +24,15 @@
     "eslint": "^8.57.1",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
+    "jsdom": "^26.1.0",
     "mini-css-extract-plugin": "^2.0.0",
-    "sass": "^1.75.0",
     "rimraf": "^3.0.2",
+    "sass": "^1.75.0",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.0.4",
+    "jsdom": "^24.0.0"
   }
 }
