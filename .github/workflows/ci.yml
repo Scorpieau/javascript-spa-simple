@@ -1,4 +1,8 @@
+
+
 name: CI
+env:
+  NODE_VERSION: 20.x
 
 on:
   push:
@@ -7,18 +11,31 @@ on:
     branches: [ main ]
 
 jobs:
-  lint:
+  audit:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run npm audit
+        run: npm run audit
+      - name: Run npm audit:fix
+        run: npm run audit:fix
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install dependencies
         run: npm ci
       - name: Run lint
@@ -26,16 +43,13 @@ jobs:
 
   test-app:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install dependencies
         run: npm ci
       - name: Run app-test-runner.js (no loader)
@@ -43,17 +57,29 @@ jobs:
 
   test-generic:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install dependencies
         run: npm ci
       - name: Run test-runner.js
         run: npm run test test/test-runner.js
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [audit, lint, test-app]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run build
+        run: npm run build

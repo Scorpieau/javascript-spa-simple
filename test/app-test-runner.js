@@ -35,3 +35,17 @@ test('App: Home controller returns a div with #btnClick', () => {
     assert.ok(btn, 'Should contain an element with id="btnClick"');
 });
 
+// Test: Home controller returns a div with #btnSecondary
+test('App: Home controller returns a div with #btnSecondary', () => {
+    const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
+    global.window = dom.window;
+    global.document = dom.window.document;
+
+    const divElement = document.createElement('div');
+    divElement.innerHTML = htmlMock;
+    const btnSecondary = divElement.querySelector('#btnSecondary');
+
+    assert.ok(divElement instanceof dom.window.HTMLElement, 'Returned value should be an HTMLElement');
+    assert.ok(btnSecondary, 'Should contain an element with id="btnSecondary"');
+});
+

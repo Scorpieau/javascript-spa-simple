@@ -12,7 +12,9 @@
     "lint:check": "eslint . --max-warnings=0",
     "test": "node --test",
     "test_loader": "node --loader ./html-loader.mjs --test",
-    "test_tap": "node --loader ./html-loader.mjs --test --test-reporter=tap"
+    "test_tap": "node --loader ./html-loader.mjs --test --test-reporter=tap",
+    "audit": "npm audit",
+    "audit:fix": "npm audit fix"
   },
   "keywords": [],
   "author": "",
