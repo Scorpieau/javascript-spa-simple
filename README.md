@@ -1,4 +1,18 @@
+
+![Build Status](https://img.shields.io/github/actions/workflow/status/your-org/your-repo/ci.yml?branch=main)
+![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)
+
 # Vanilla JavaScript SPA
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Scripts](#scripts)
+- [Project Structure](#project-structure)
+- [CI Workflow](#ci-workflow)
+- [Legend](#legend)
+- [License](#license)
 
 This project is a simple Single Page Application (SPA) built with vanilla JavaScript, HTML, and CSS. It demonstrates basic SPA routing, modular controllers, and dynamic view rendering without any front-end frameworks. The app is bundled with Webpack and styled using Sass and Bootstrap.
 
@@ -78,6 +92,7 @@ graph TD
     style C fill:#90caf9,color:#000
 ```
 
+
 **Generic Unit Tests Workflow (Flowchart):**
 ```mermaid
 flowchart TD
@@ -86,6 +101,32 @@ flowchart TD
     style D fill:#a5d6a7,color:#000
 ```
 
+## Legend
+
+- <span style="background:#90caf9;color:#000;padding:2px 6px;border-radius:3px">Light Blue</span>: Application tests node
+- <span style="background:#a5d6a7;color:#000;padding:2px 6px;border-radius:3px">Light Green</span>: Generic unit tests node
+
+## Generic Unit Tests
+
+Generic unit tests are designed to verify the core logic and modules of the application in isolation. These tests ensure that individual functions and components work as expected, independent of the full application workflow.
+
+To run generic unit tests:
+
+```sh
+npm test
+```
+
+Other test scripts:
+
+- `npm run test_loader`: Runs tests using a custom HTML loader.
+- `npm run test_tap`: Runs tests with the TAP reporter.
+
+See the `test/` directory for more details.
+
 ## License
+
 ISC
-  Fails if there are any lint warnings or errors.
+
+---
+
+> Note: The build will fail if there are any lint warnings or errors.
