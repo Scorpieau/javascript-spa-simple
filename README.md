@@ -88,7 +88,7 @@ graph TD
     A[Audit dependencies] --> E[Build application]
     B[Lint source code] --> E
     C[Application tests] --> E
-    E --> F[Start and verify application]
+    E --> |push to main only| F[Start and verify application]
     style F fill:#90caf9,color:#000
 ```
 
@@ -96,7 +96,7 @@ graph TD
 **Generic Unit Tests Workflow (Flowchart):**
 ```mermaid
 flowchart TD
-    T((Push or Pull Request to main branch))
+    T((Pull Request to main branch))
     T --> D[Generic unit tests]
     style D fill:#a5d6a7,color:#000
 ```
