@@ -96,7 +96,7 @@ graph TD
 **Generic Unit Tests Workflow (Flowchart):**
 ```mermaid
 flowchart TD
-    T((Push or Pull Request to main branch))
+    T((Pull Request to main branch))
     T --> D[Generic unit tests]
     style D fill:#a5d6a7,color:#000
 ```
