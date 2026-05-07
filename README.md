@@ -88,7 +88,7 @@ graph TD
     A[Audit dependencies] --> E[Build application]
     B[Lint source code] --> E
     C[Application tests] --> E
-    E --> F[Start and verify application]
+    E --> |push to main only| F[Start and verify application]
     style F fill:#90caf9,color:#000
 ```
 
